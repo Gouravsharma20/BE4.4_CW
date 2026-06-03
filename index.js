@@ -185,7 +185,7 @@ async function updateMovie(movieId,dataToUpdate) {
     }
 }
 
-updateMovie("6a1ed7aafdd57125f93b26ae",{rating:3.2})
+// updateMovie("6a1ed7aafdd57125f93b26ae",{rating:3.2})
 
 //update one
 
@@ -201,8 +201,58 @@ async function updateMovieDetails(movieTitle,valueToUpdate){
 }
 
 
-updateMovieDetails("The Grand Meridian",{rating:4.44})
+// updateMovieDetails("The Grand Meridian",{rating:4.44})
 
+
+
+// BE2.3_HW2
+
+
+async function updateHotelName(hotelId,hotelName){
+    await initializeDatabase()
+    try {
+        const updatedData = await Hotel.findByIdAndUpdate(hotelId,hotelName,{new:true})
+        console.log(`${hotelName} updated successfully as :`,updatedData)
+
+    } catch(err) {
+        console.log(`Error updating hotel name `,err)
+    }
+}
+
+// updateHotelName("6a1ed7aafdd57125f93b26ae",{name:"new Hotel"})
+
+async function updateHotelData(hotelName,valueToUpdate){
+    await initializeDatabase()
+    try {
+        const updatedData = await Hotel.findOneAndUpdate({name:hotelName},valueToUpdate,{new:true})
+        console.log(`${hotelName} updated successfully`,updatedData)
+
+    } catch (err) {
+        console.log(`unable to find hotel ${hotelName} `,err)
+    }
+}
+
+
+
+// updateHotelData("Lake View",{rating:"4.2"})
+
+
+
+
+
+
+async function updatePhoneNumber(phoneNumber,updatedPhoneNumber){
+    await initializeDatabase()
+    try {
+        const updateNumber = await Hotel.findOneAndUpdate({phoneNumber:updatedPhoneNumber})
+        console.log("phone number updated successfully as ",updatedPhoneNumber)
+
+    } catch(err) {
+        console.log("Error updating phone number : ",err)
+    }
+}
+
+updatePhoneNumber("+1299655890","+1997687392")
 
 
 
