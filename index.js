@@ -252,7 +252,36 @@ async function updatePhoneNumber(phoneNumber,updatedPhoneNumber){
     }
 }
 
-updatePhoneNumber("+1299655890","+1997687392")
+// updatePhoneNumber("+1299655890","+1997687392")
+
+
+async function deleteHotel(hotelId) {
+    await initializeDatabase()
+    try {
+        const deleteMovie = await Hotel.findByIdAndDelete(hotelId)
+        console.log("Hotel data deleted successfully",deleteMovie)
+
+    } catch(err){
+        console.log("An error occured while deleting hotel: ",err)
+    }
+}
+
+//  deleteHotel("6a1ed7aafdd57125f93b26ae")
+
+async function deleteHotelByData(hotelTitle){
+    await initializeDatabase()
+    try {
+        const deleteMovie = await Hotel.findOneAndDelete({name:hotelTitle})
+        console.log(`${hotelTitle} deleted successfully`,deleteHotel)
+
+    } catch(err) {
+        console.log("Error loading data",err)
+    }
+}
+
+deleteHotelByData("Azure Bay Resort")
+
+
 
 
 
