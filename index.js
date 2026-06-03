@@ -279,8 +279,43 @@ async function deleteHotelByData(hotelTitle){
     }
 }
 
-deleteHotelByData("Azure Bay Resort")
+// deleteHotelByData("Azure Bay Resort")
 
+// deleteHotelById
+
+async function deleteHotelById(hotelId){
+    await initializeDatabase()
+    try {
+        const deleteData = await Hotel.findByIdAndDelete(hotelId)
+        console.log(`Hotel data with ${hotelId} deleted successfully`)
+    } catch(err) {
+        console.log("Error deleteing hotel data by id ",err)
+    }
+}
+
+deleteHotelById("6a1ed7abfdd57125f93b26b1")
+
+
+// deleteHotelByPhoneNumber
+
+async function deleteHotelByPhoneNumber(phoneNum) {
+    await initializeDatabase()
+    try {
+        const deleteData = await Hotel.findOneAndDelete({phoneNumber:phoneNum})
+        console.log(`data with ${phoneNum} deleted successfully : `,deleteData)
+
+    } catch(err) {
+        console.log("Error loading data : ",err)
+    }
+
+    try {
+
+    } catch(err) {
+        console.log("Error deleteing data with phone Number : ",err)
+    }
+}
+
+deleteHotelByPhoneNumber("+918887776655")
 
 
 
