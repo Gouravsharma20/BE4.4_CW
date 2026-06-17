@@ -52,7 +52,7 @@ async function getAllMovie() {
 app.get("/allMovies",async(req,res)=>{
     try {
         const allMovies = await getAllMovie()
-        if (!allMovies || allMovies.length === 0) {
+        if (allMovies.length === 0) {
             return res.status(404).json({error:"all movies not founds"})
         } else {
             return res.status(200).json({message:"all movies found successfully",AllMovies:allMovies})
@@ -107,7 +107,7 @@ app.post("/movies",async(req,res)=>{
 // const hotelData = JSON.parse(jsonData)
 
 
-const PORT = 2225
+const PORT = 2226
 
 app.listen(PORT,()=>{
     console.log(`Server is running on Port ${PORT}`)
