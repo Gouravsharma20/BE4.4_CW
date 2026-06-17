@@ -52,7 +52,7 @@ async function getAllMovie() {
 app.get("/allMovies",async(req,res)=>{
     try {
         const allMovies = await getAllMovie()
-        if (!allMovies && allMovies.length === 0) {
+        if (!allMovies || allMovies.length === 0) {
             return res.status(404).json({error:"all movies not founds"})
         } else {
             return res.status(200).json({message:"all movies found successfully",AllMovies:allMovies})
