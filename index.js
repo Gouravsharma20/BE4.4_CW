@@ -107,7 +107,7 @@ app.post("/movies",async(req,res)=>{
 // const hotelData = JSON.parse(jsonData)
 
 
-const PORT = 2226
+const PORT = 2228
 
 app.listen(PORT,()=>{
     console.log(`Server is running on Port ${PORT}`)
