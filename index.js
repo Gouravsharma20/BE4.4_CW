@@ -23,8 +23,7 @@ app.use(cors(corsOptions));
 
 const Movie = require("./model/MovieModel.js")
 const { error } = require("console")
-
-const jsonData = fs.readFileSync("./data/hotelData.json","utf-8")
+// const jsonData = fs.readFileSync("./data/hotelData.json","utf-8")
 
 app.get("/",(req,res)=>{
     res.json("Welcoem to my Movie express app")
@@ -105,7 +104,7 @@ app.post("/movies",async(req,res)=>{
 })
 
 
-const hotelData = JSON.parse(jsonData)
+// const hotelData = JSON.parse(jsonData)
 
 
 const PORT = 2225
