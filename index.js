@@ -103,11 +103,37 @@ app.post("/movies",async(req,res)=>{
     }
 })
 
+async function getMovieByTitle(movieTitle) {
+    try {
+        const foundMovie = await Movie.findOne({title: movieTitle})
+        return foundMovie
+    } catch(err){
+        console.log("an error occured while getting movies by title")
+        throw err
+    } 
+}
+
+app.get("/movies/:title",async(req,res)=>{
+    try {
+        const title = req.params.title
+        const movieFound = await getMovieByTitle(title)
+        if (!movieFound) {
+            return res.status(404).json({error:"movie not found"})
+        } else {
+            return res.status(200).json({message:`movie with title ${title} found successfully`,FoundMovie:movieFound})
+        }
+        
+
+    } catch(err) {
+        return res.status(500).json({error:"an error getting movie by id",errorDetails:err.message})
+    }
+})
+
 
 // const hotelData = JSON.parse(jsonData)
 
 
-const PORT = 2228
+const PORT = 2235
 
 app.listen(PORT,()=>{
     console.log(`Server is running on Port ${PORT}`)
